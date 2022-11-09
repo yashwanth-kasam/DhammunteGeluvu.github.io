@@ -26,6 +26,7 @@ const checkWin = ()=>{
     wins.forEach(e =>{
         if((boxtext[e[0]].innerText === boxtext[e[1]].innerText) && (boxtext[e[2]].innerText === boxtext[e[1]].innerText) && (boxtext[e[0]].innerText !== "") ){
             document.querySelector('.info').innerText = boxtext[e[0]].innerText + " Won"
+            gameover.play()
             isgameover = true
             document.querySelector('.imgbox').getElementsByTagName('img')[0].style.width = "200px";
             document.querySelector(".line").style.transform = `translate(${e[3]}vw, ${e[4]}vw) rotate(${e[5]}deg)`
@@ -35,7 +36,7 @@ const checkWin = ()=>{
 }
 
 // Game Logic
-//music.play()
+music.play()
 let boxes = document.getElementsByClassName("box");
 Array.from(boxes).forEach(element =>{
     let boxtext = element.querySelector('.boxtext');
@@ -59,7 +60,6 @@ reset.addEventListener('click', ()=>{
         element.innerText = ""
     });
     turn = "X"; 
-    gameover.play()
     isgameover = false
     document.querySelector(".line").style.width = "0vw";
     document.getElementsByClassName("info")[0].innerText  = "Turn for " + turn;
